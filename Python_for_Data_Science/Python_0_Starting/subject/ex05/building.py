@@ -33,7 +33,8 @@ def main():
         print("AssertionError: more than one argument is provided")
     elif len(args) == 1:
         print("What is the text to count?")
-        text = sys.stdin.readline().replace('\n', ' ')  # carriage return을 space로 간주하기 위해 변경. input은 줄개행을 못받음
+        # carriage return을 space로 간주하기 위해 변경. input은 줄개행을 못받음
+        text = sys.stdin.readline().replace('\n', ' ')
         text_analyzer(text)
     else:
         text_analyzer(args[1])
