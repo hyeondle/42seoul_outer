@@ -34,8 +34,8 @@ def ft_zoom(image_array: np.ndarray, channel: int) -> np.ndarray:
         # add a new axis to the array
         zoomed_array = zoomed_array[..., np.newaxis]
 
-        print("New shape after slicing:", zoomed_array.shape)
-        print(zoomed_array)
+    print("New shape after slicing:", zoomed_array.shape)
+    print(zoomed_array)
 
     return zoomed_array
 
