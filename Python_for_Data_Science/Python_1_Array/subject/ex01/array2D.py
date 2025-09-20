@@ -1,43 +1,37 @@
-import numpy as np
-
-
 def slice_me(family: list, start: int, end: int) -> list:
+    """function that takes as parameters a 2D array, prints its shape,
+    and returns a truncated version of the array
+    based on the provided start and end arguments.
     """
-    Slices a given 2D list based on the provided start and end indices.
+    if not isinstance(family, list) or len(family) == 0:
+        raise ValueError("family must be a non-empty list of lists.")
+    if not all(isinstance(row, list) for row in family):
+        raise ValueError("family must be a list of lists.")
+    ncols = len(family[0])
+    if ncols == 0:
+        raise ValueError("inner lists must be non-empty.")
+    for row in family:
+        if len(row) != ncols:
+            raise ValueError("all rows must have same length.")
 
-    Parameters:
-    family (list): A 2D list representing numerical data.
-    start (int): The starting index for slicing.
-    end (int): The ending index for slicing.
-
-    Returns:
-    list: A new 2D list containing the truncated data.
-
-    Raises:
-    TypeError: If the input is not a list.
-    ValueError: If the input is not a valid 2D list.
-    """
-    if (
-        not isinstance(family, list) or
-        not all(isinstance(row, list) for row in family)
-    ):
-        raise TypeError("Input must be a 2D list.")
-
-    row_lengths = [len(row) for row in family]
-    if len(set(row_lengths)) != 1:
-        raise ValueError("All inner lists must have the same length.")
-
-    array = np.array(family)
-    print("My shape is :", array.shape)
-    new_array = array[start:end]
-    print("My new shape is :", new_array.shape)
-
-    return new_array.tolist()
+    print(f"My shape is : ({len(family)}, {ncols})")
+    sliced = family[start:end]
+    print(f"My new shape is : ({len(sliced)}, {ncols})")
+    return [r[:] for r in sliced]
 
 
-def main():
-    return
+def main() -> None:
+    """test from subject"""
+    try:
+        family = [[1.80, 78.4],
+                  [2.15, 102.7],
+                  [2.10, 98.5],
+                  [1.88, 75.2]]
+        print(slice_me(family, 0, 2))
+        print(slice_me(family, 1, -2))
+    except Exception as exc:  # noqa: BLE001
+        print(f"Error: {exc}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

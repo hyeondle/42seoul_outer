@@ -54,7 +54,9 @@ def ft_blue(array: np.ndarray) -> np.ndarray:
 
 def ft_grey(array: np.ndarray) -> np.ndarray:
     """Converts the image to grayscale."""
-    grey_array = (array[..., 0] / 3 + array[..., 1] / 3 + array[..., 2] / 3).astype(np.uint8)
+    grey_array = (array[..., 0] / 3 +
+                  array[..., 1] / 3 +
+                  array[..., 2] / 3).astype(np.uint8)
     filtered_array = np.stack((grey_array,) * 3, axis=-1)
 
     plt.figure(figsize=(6, 6))
@@ -65,6 +67,14 @@ def ft_grey(array: np.ndarray) -> np.ndarray:
 
 
 def main():
+    """simple test"""
+    array = ft_load("landscape.jpg")
+    ft_invert(array)
+    ft_red(array)
+    ft_green(array)
+    ft_blue(array)
+    ft_grey(array)
+    print(ft_invert.__doc__)
     return
 
 

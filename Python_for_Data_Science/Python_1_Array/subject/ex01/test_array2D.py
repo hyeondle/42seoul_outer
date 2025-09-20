@@ -1,4 +1,4 @@
-from array2D import slice_me
+from Python_for_Data_Science.Python_1_Array.subject.ex01.array2D_old import slice_me
 
 family = [[1.80, 78.4],
             [2.15, 102.7],

@@ -41,6 +41,9 @@ def ft_zoom(image_array: np.ndarray, channel: int) -> np.ndarray:
 
 
 def main():
+    """
+    load image and zoom image test.
+    """
     try:
         image_array = ft_load("animal.jpeg")
         zoomed_image = ft_zoom(image_array, 1)
